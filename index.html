@@ -5,6 +5,11 @@
   </head>
   <body>
     <main>
+      <form id="post-form" onsubmit="createPost()">
+        <input id="title"></input>
+        <input id="body"></input>
+        <input id="author"></input>
+      </form>
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
@@ -15,5 +20,19 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
+
+    <script id="comment-template" type="text/x-lodash-template">
+    <div class="comment">
+    <form onsubmit="postComment()">
+      <div class="comment-body"><%= comment %></div>
+      <footer>
+      <input id="commenter">
+          <span class="author">Posted By: </span>
+          <%= author %>
+      </input>
+      </footer>
+    </form>
+    </div>
+  </script>
   </body>
 </html>
