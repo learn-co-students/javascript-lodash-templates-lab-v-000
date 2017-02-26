@@ -1,0 +1,86 @@
+HTML
+
+<form onsubmit="postComment(); return false;">
+  Name: <input type="text" id="commenterName"><br>		// keys match variable names in postComment function
+  Comment: <input type="textarea" id="commentText"><br>
+</form>
+
+<body>
+...
+<script id="comment-template" type="text/x-lodash-template">
+    <div class="comment">
+      <div class="comment-body"><%= comment %></div>		// change %= to %~ to prevent commenters from using HTML markup in contents
+      <div class="commenter">
+        <p>
+          <span class="posted-by">Posted By: </span>		// removes need to have html in template string
+          <%= commenter %>
+        </p>
+      </div>
+    </div>
+  </script>
+</body>
+
+
+index.js
+
+function postComment(} {
+  var commenter = document.getElementById("commenterName").value;	// assign fields to variables by field ids
+  var comment = document.getElementById("commentText").value;		
+
+  // lodash template
+  var commentTemplate = '<div class="comment"><p><%= comment %></p><p>Posted By: <span class="commenter"><%= commenter %></span></p></div>';
+  becomes the following after adding the above code:
+  var commentTemplate = document.getElementById("comment-template").innerHTML
+
+  // create function that can be called with JSON argument
+  var templateFn = _.template(commentTemplate);
+
+  // execute template function with JSON object for interpolated values
+  var templateHTML = templateFn({ 'comment': comment, 'commenter': commenter });
+
+  // append the new comment to existing comments
+  var commentsDiv = document.getElementById("comments");
+  commentsDiv.innerHTML += templateHTML;
+}
+
+
+
+---
+Lab
+---
+
+page-template - contains page of blog post including sidebar and post elements
+post-template - blog post contains header and footer wrapped in article
+comments-template - container for collection of comments on blog post and comment from
+
+
+
+page
+  sidebar
+  post'
+    article
+      header  # post title
+      footer  # post author
+    /article
+  /post
+/page
+
+
+
+comments
+  comment
+    footer  # commenter name
+  /comment
+  comment
+    footer  # commenter name
+  /comment
+  form      # new comments calls postComment()
+    name
+    text
+  /form
+/comments
+
+form        # new post calls createPost()
+  title
+  author
+/form
