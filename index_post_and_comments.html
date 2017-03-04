@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>JavaScript lodash Templates Lab</title>
+</head>
+
+<body>
+  <script src="node_modules/lodash/lodash.min.js"></script>
+  <script src="index.js"></script>
+  <!-- Open this file and call `mocha.run()` in console to run tests -->
+  <div id="mocha"></div>
+  <script src="node_modules/mocha/mocha.js"></script>
+  <script src="node_modules/expect/umd/expect.min.js"></script>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script>
+  mocha.setup('bdd');
+  </script>
+  <script id="page-template" type="text/x-lodash-template">
+    <h3>Add Post</h3>
+    <!-- ########### add post form ############### -->
+    <div id="post-form">
+      <form onsubmit="createPost();return false;">
+        <p>
+          Title:
+          <input type="text" id="post-title">
+        </p>
+        <p>
+          Body:
+          <textarea id="post-body"></textarea>
+        </p>
+        <p>
+          Author:
+          <input type="text" id="post-author">
+        </p>
+        <input type="submit">
+      </form>
+    </div>
+    <h3>Posts:</h3>
+    <!-- ########### Posts ############### -->
+    <div id="sidebar">
+    </div>
+    <div id="post-template">
+      <article>
+        <header>
+          <%- post-title %>
+        </header>
+        <%- post-template %>
+          <footer>
+            <%- post-author %>
+          </footer>
+      </article>
+    </div>
+  </script>
+  <script id="comments-template" type="text/x-lodash-template">
+    <h3>Add Comment:</h3>
+    <!-- ########### new comment form ############### -->
+    <form onsubmit="postComment();return false;">
+      <p>
+        Comment Text:
+        <textarea id="comment-text"></textarea>
+      </p>
+      <p>
+        Commenter:
+        <input type="text" id="commenter">
+      </p>
+      <input type="submit">
+    </form>
+    <h3>Comments</h3>
+    <!-- ########### Comments ############### -->
+    <div class="comment-template">
+      <%- comment-template %>
+        <footer>
+          <-% commenterName %>
+        </footer>
+    </div>
+  </script>
+</body>
+
+</html>
