@@ -4,9 +4,52 @@
     <title>JavaScript lodash Templates Lab</title>
   </head>
   <body>
+
     <main>
+
+      <form id="post-form" onsubmit="createPost(); return false;">
+        Title<input type="text" id="post_title" value=""><br>
+        Content<input type="text" id="post_content" value=""><br>
+        Author<input type="text" id="post_author" value=""><br>
+        <input type="submit">
+      </form>
+
     </main>
+
     <script src="node_modules/lodash/lodash.min.js"></script>
+
+    <script id="page-template" type="text/x-lodash-template">
+      <div id="post">
+      </div>
+      <div id="sidebar">
+      </div>
+    </script>
+
+    <script id="post-template" type="text/x-lodash-template">
+      <article>
+        <header><%- post_title %></header>
+        <p>Content: <%- post_content %></p>
+        <footer>Posted by: <%- post_author %></footer>
+      </article>
+    </script>
+
+    <script id="comments-template" type="text/x-lodash-template">
+      <div id="comments">
+        <form onsubmit="postComment(); return false;">
+          Comment Content<input type="text" id="comment_content" value=""><br>
+          Comment Author<input type="text" id="comment_author" value=""><br>
+          <input type="submit">
+        </form>
+      </div>
+    </script>
+
+    <script id="comment-template" type="text/x-lodash-template">
+      <div>
+        <p><%- comment_content %></p>
+        <footer><%- comment_author %></footer>
+      </div>
+    </script>
+
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
