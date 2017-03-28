@@ -6,6 +6,16 @@
   <body>
     <main>
     </main>
+      <article>
+        <form id="post-form" onsubmit="createPost();return false;">
+          Title: <input type="text" id="post-title"><br>
+          Body: <input type="textarea" id="post-body"><br>
+          Author: <input type="text" id="post-author"><br>
+          <input type="submit">
+        </form>
+      </article>
+
+
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
@@ -15,5 +25,56 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
+    <div id="blog-page">
+      <script id="page-template" type="text/x-lodash-template">
+        <div class="page-blog-post">
+          <div id="sidebar"><%= sidebar %></div>
+          <div class="page-blog-post-post">
+            <p>
+              <div id="post"><%= post %></div>
+            </p>
+          </div>
+        </div>
+      </script>
+    </div>
+    <div id="blog-post">
+      <script id="post-template" type="text/x-lodash-template">
+        <article>
+          <header>
+            <h1 class="blog-post-title"><%= postTitle %></h1>
+          </header>
+          <p class="blog-post-body"><%= postBody %></p>
+          <footer>
+            <p class="blog-post-author">
+              <span>Posted By: </span>
+              <%= postAuthor %>
+            </p>
+          </footer>
+        </article>
+      </script>
+    </div>
+    <script id="comments-template" type="text/x-lodash-template">
+      <div id="comments">
+        <form onsubmit="postComment();return false;">
+          CommentBody: <input type="textarea" id="comment-body"><br>
+          Name: <input type="text" id="commenter-name"><br>
+          <input type="submit">
+        </form>
+      </div>
+    </script>
+    <div id="comment-post"></div>
+    <script id="comment-template" type="text/x-lodash-template">
+      <article>
+        <header>
+          <h5 class="comment-body"><%= commentBody %></h1>
+        </header>
+        <footer>
+          <p class="commenter-name">
+            <span>Posted By: </span>
+            <%= commenterName %>
+          </p>
+        </footer>
+      </article>
+    </script>
   </body>
 </html>
