@@ -4,6 +4,48 @@
     <title>JavaScript lodash Templates Lab</title>
   </head>
   <body>
+  <main>
+    <form id="post-form" onsubmit="createPost();return false;">
+      Title: <input type="text" id="postTitle"><br>
+      Body: <input type="textarea" id="postBody"><br>
+      Author: <input type="text" id="postAuthor"><br>
+      <input type="submit">
+    </form>
+  </main>
+
+    <script id="comments-template" type="text/x-lodash-template">
+      <form onsubmit="postComment();return false;">
+        Name: <input type="text" id="commenters"><br>
+        Comment: <input type="text" id="commenterText"><br>
+        <input type="submit">
+      </form>
+      <div id="comments">
+      </div>
+    </script>
+
+    <script type="text/x-lodash-template" id="comment-template">
+      <div class="comment-text"><%= commenterText %></div>
+      <div class="commenter">
+        <footer>
+          <span>Posted By: </span>
+          <%= commenter %>
+        </footer>
+      </div>
+    </script>
+
+    <script type="text/x-lodash-template" id="page-template">
+      <div id="post"></div>
+      <div id="sidebar"></div>
+    </script>
+
+    <script type="text/x-lodash-template" id="post-template">
+      <article>
+        <header><%= title %></header>
+        <p><%= body %></p>
+        <footer><%= author %></footer>
+      </article>
+    </script>
+
     <main>
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
@@ -12,7 +54,7 @@
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/expect/umd/expect.min.js"></script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
   </body>
