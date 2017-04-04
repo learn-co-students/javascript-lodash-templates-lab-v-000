@@ -33,7 +33,7 @@
     </script>
     <!-- end page template -->
 
-    <!-- This is where our post is formated -->
+    <!-- This is where our post is formated this will be put in the post id of page template-->
     <script id="post-template" type="text/x-lodash-template">
       <article>
         <header><%= blogTitle %></header>
@@ -43,6 +43,7 @@
     </script>
     <!-- end of post template -->
 
+    <!-- This is the form for comments, it will be inserted/run when the first post is submitted-->
     <script id="comments-template" type="text/x-lodash-template">
       <div id="comments">
         <form onsubmit="postComment(); return false;">
@@ -52,11 +53,14 @@
         </form>        
       </div>
     </script>
+    <!-- end of comments template (form) -->
 
+    <!-- Formatting for the comments, this will be used only after post is submitted and comment submitted -->
     <script id="comment-template" type="text/x-lodash-template">
       <p><%= comment %></p>
       <footer>Posted By: <%= commenter %></footer>
     </script>
+    <!-- end of scripts -->
 
   </body>
 </html>
