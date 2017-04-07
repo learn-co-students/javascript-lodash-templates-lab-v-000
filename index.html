@@ -5,14 +5,64 @@
   </head>
   <body>
     <main>
+      <h1>Create Post</h1>
+      <form id="post-form" onsubmit="createPost(); return false;">
+        Title: <input type="text" id="post-title"><br><br>
+        Post: <input type="textarea" id="post-body"><br><br>
+        User: <input type="text" id="post-user"><br><br>
+        <input type="submit">
+      </form>
     </main>
+
+    <!-- page-template will represent our page -->
+    <script id="page-template" type="text/x-lodash-template">
+      <div id="sidebar"></div>
+      <div id="post"></div>
+    </script>
+
+    <!-- will hold our comments -->
+    <script id="comments-template" type="text/x-lodash-template">
+      <h4 style="color: green;">Comments</h4>
+      <div id="comments"></div>
+      <h5>Comment on this post</h5>
+      <form onsubmit="postComment(); return false;">
+        Comment: <input type="textarea" id="comment-body"><br><br>
+        Name: <input type="text" id="comment-user"><br><br>
+        <input type="submit">
+      </form>
+    </script>
+
+    <!-- will hold format of our comment -->
+    <script id="comment-template" type="text/x-lodash-template">
+      <article>
+        <p><%- comment %></p>
+        <footer>
+          Commented By: <span style="color: red;"><%- commenter %></span>
+        </footer>
+      </article>
+      <br>
+    </script>
+
+    <!-- will hold our post data -->
+    <script id="post-template" type="text/x-lodash-template">
+      <article>
+        <header>
+          <h2 style="color: blue;"><%- title %></h2>
+        </header>
+        <p><%- body %></p>
+        <footer>
+          Posted By: <span style="color: red;"><%- poster %></span>
+        </footer>
+      </article>
+    </script>
+
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/expect/umd/expect.min.js"></script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
   </body>
