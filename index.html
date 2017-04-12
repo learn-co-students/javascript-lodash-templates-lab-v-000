@@ -5,11 +5,61 @@
   </head>
   <body>
     <main>
+      <form id="post-form" onsubmit="createPost()">
+        Title: <input type="text" id="postTitle"><br></br>
+        Body: <input type="text" id="postBody"><br></br>
+        Author: <input type="text" id="postAuthor"><br></br>
+        <input type="submit">
+      </form>
     </main>
+
+
+<!-- Lodash Templates -->
+
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
+
+    <!-- Page Template -->
+    <script type="text/x-lodash-template" id="page-template">
+      <div id="post">
+        <%= postContent %>
+      </div>
+      <div id="sidebar">
+        <%= sidebarContent %>
+      </div>
+    </script>
+
+    <!-- Post Template -->
+    <script type="text/x-lodash-template" id="post-template">
+      <article id="article">
+        <header id="articleHeader"><%- header %></header>
+        <div id="articleContent">
+          <%- articleContent %>
+        </div>
+        <footer id="articleFooter"><%- footer %></footer>
+      </article>
+    </script>
+
+    <!-- Comments Template -->
+    <script type="text/x-lodash-template" id="comments-template">
+      <div id="comments">
+        <form onsubmit="postComment()" id="comments-form">
+          Name: <input type="text" id="commenterName">
+          Comment: <input type="text" id="commenterComment">
+          <input type="submit" >
+        </form>
+      </div>
+    </script>
+
+    <!-- single comment template -->
+    <script type="text/x-lodash-template" id="comment-template">
+      <div class="comment">
+        <div class="commentText"><p><%- commenterComment %></p></div>
+        <footer>Posted By: <%- commenterName %></footer>
+      </div>
+    </script>
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/expect/umd/expect.min.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
