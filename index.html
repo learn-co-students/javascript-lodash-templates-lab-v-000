@@ -5,7 +5,22 @@
   </head>
   <body>
     <main>
+      <article>
+        <header><h2>The Results are In!</h2></header>
+        <p>
+          After careful consideration and a generous grant from NASA, our team has determined that a woodchuck could chuck five wood, with a standard deviation of +/- .37 wood.
+        </p>
+        <footer>posted by Chuck Wooden</footer>
+        <form onsubmit="createPost();return false;" id="post-form">
+           Title: <input type="text" id="postTitle"><br>
+           Author: <input type="text" id="postAuthor"><br>
+           Post: <input type="text" id="postBody"><br>
+           <input type="submit">
+         </form>
+        <div id="comments"></div>
+    </article>
     </main>
+
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
@@ -15,5 +30,36 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
+
+    <script id="page-template" type="text/x-lodash-template">
+     <div id="sidebar"></div>
+     <div id="post"></div>
+    </script>
+
+   <script id="post-template" type="text/x-lodash-template">
+     <article>
+       <header><h2><%- title %></h2><header>
+       <p><%- body %></p>
+       <footer>Posted by: <%- poster %></footer>
+     </article>
+   </script>
+
+   <script id="comments-template" type="text/x-lodash-template">
+     <div id="comments">
+       <form onsubmit="postComment();return false;">
+         Name: <input type="text" id="commenter"><br>
+         Comment: <input type="text" id="commentText"><br>
+         <input type="submit">
+       </form>
+     </div>
+   </script>
+
+   <script id="comment-template" type="text/x-lodash-template">
+     <div>
+       <p><%= comment %></p>
+       <footer>Posted by: <%= commenter %></footer>
+     </div>
+   </script>
+
   </body>
 </html>
