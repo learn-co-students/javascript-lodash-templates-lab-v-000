@@ -5,6 +5,16 @@
   </head>
   <body>
     <main>
+
+      <!-- Create a post form -->
+      <form id="post-form" onsubmit="createPost(); return false;">
+        Title: <input type="text" id="blogTitle"><br>
+        Body: <input type="textarea" id="blogBody"><br>
+        Author: <input type="text" id="blogAuthor"><br>
+        <input type="submit">
+      </form>
+      <!-- create post form end -->
+
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
@@ -15,5 +25,42 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
+
+    <!-- Page Template where there will be a sidebar and where the blog posts are stored -->
+    <script id="page-template" type="text/x-lodash-template">
+      <div id="sidebar"></div>
+      <div id="post"></div>  
+    </script>
+    <!-- end page template -->
+
+    <!-- This is where our post is formated this will be put in the post id of page template-->
+    <script id="post-template" type="text/x-lodash-template">
+      <article>
+        <header><%= blogTitle %></header>
+        <p><%= blogBody %></p>
+        <footer><%= blogAuthor %></footer>
+      </article>
+    </script>
+    <!-- end of post template -->
+
+    <!-- This is the form for comments, it will be inserted/run when the first post is submitted-->
+    <script id="comments-template" type="text/x-lodash-template">
+      <div id="comments">
+        <form onsubmit="postComment(); return false;">
+          Name: <input type="text" id="commenter"><br>
+          Comment: <input type="text" id="comment"><br>
+          <input type="submit">
+        </form>        
+      </div>
+    </script>
+    <!-- end of comments template (form) -->
+
+    <!-- Formatting for the comments, this will be used only after post is submitted and comment submitted -->
+    <script id="comment-template" type="text/x-lodash-template">
+      <p><%= comment %></p>
+      <footer>Posted By: <%= commenter %></footer>
+    </script>
+    <!-- end of scripts -->
+
   </body>
 </html>
