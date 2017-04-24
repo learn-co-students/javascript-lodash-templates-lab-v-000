@@ -6,7 +6,12 @@
   <body>
     <main>
       <div id="main-page">
-
+        <form onsubmit="createPost();return false;" id="post-form">
+          Title: <input type="text" id="postTitle"><br>
+          Post Content: <input type="textarea" id="postContent"><br>
+          Author: <input type="text" id="commenterName"><br>
+          <input type="submit">
+        </form><br>
       </div>
       
 <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
