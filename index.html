@@ -5,6 +5,53 @@
   </head>
   <body>
     <main>
+      <div id="main-page">
+
+      </div>
+      
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+      
+      <script id="page-template" type="text/x-lodash-template"> <!-- should page-template go here -->
+        <div id="sidebar">
+
+        </div>
+        <div id="posts">
+        
+        </div>
+        <form onsubmit="createPost();return false;" id="post-form">
+          Title: <input type="text" id="postTitle"><br>
+          Post Content: <input type="textarea" id="postContent"><br>
+          Author: <input type="text" id="commenterName"><br>
+          <input type="submit">
+        </form><br>
+      </script>
+      <script id="post-template" type="text/x-lodash-template"> <!-- goes in posts div -->
+        <article>
+          <div id="post-title">
+            <header><%- postTitle %></header>
+          </div>
+          <div id="post-content">
+            <p><%- postContent %></p>
+          </div>
+          <div id="post-author">
+            <footer><%- postAuthor %></footer>
+          </div>
+          <div id="post-comments">
+          </div>
+        </article>
+      </script>
+      <script id="comments-template" type="text/x-lodash-template"> <!-- goes in post-comments div -->
+        <div id="comment">
+        </div>
+        <form onsubmit="postComment();return false;" id="comment-form">
+          Author: <input type="text" id="commenter"><br>
+          Content: <input type="textarea" id="comment"><br>
+          <input type="submit">
+        </form><br>
+      </script>
+      <script id="comment-template" type="text/x-lodash-template"> <!-- goes in comment div -->
+      
+      </script>
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
