@@ -17,19 +17,22 @@
       
     <script id="page-template" type="text/x-lodash-template">
       <div id="sidebar"></div>
-      <div id="posts"></div>
+      <div id="post"></div>
     </script>
 
     <script id="post-template" type="text/x-lodash-template"> <!-- goes in 'posts'' div -->
       <article>
-        <header><%- title %></header><br>
+        <header><h2><%- title %></h2></header><br>
         <p><%- content %></p>
-        <footer>Posted by: <%- author %></footer>
-        <div id="post-comments"></div>
+        <footer><small>Posted by: <%- author %></small></footer><br></br>
+        <div id="post-<%-counter%>-comments"></div>
       </article>
     </script>
 
     <script id="comments-template" type="text/x-lodash-template"> <!-- goes in post-comments div -->
+      <div id="comments">
+        <h4>Comments</h4>
+      </div>
       <form onsubmit="postComment();return false;" id="comment-form">
         Author: <input type="text" id="commenter"><br>
         Content: <input type="textarea" id="comment"><br>
@@ -38,10 +41,8 @@
     </script>
 
     <script id="comment-template" type="text/x-lodash-template"> <!-- goes in comment div -->
-      <div>
-        <p><%- comment %></p><br>
-        <footer><%- author %></footer><br>
-      </div>
+      <p><%- comment %></p>
+      <footer><small>posted by: <%- commenter %></small></footer><br>
     </script>
 
     <script src="node_modules/lodash/lodash.min.js"></script>
@@ -50,7 +51,7 @@
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/expect/umd/expect.min.js"></script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="jquery-3.2.0.min.js"></script>
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
   </body>
