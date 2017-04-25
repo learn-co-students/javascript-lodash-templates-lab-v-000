@@ -14,7 +14,6 @@ function createPost() {
   // appending content
   document.getElementsByTagName('main')[0].innerHTML += pageTemplateFn();
   document.getElementById('post').innerHTML += postTemplateHTML;
-  debugger;
   document.getElementById(`post-${counter}-comments`).innerHTML += commentsTemplateFn();
   counter++;
 }
