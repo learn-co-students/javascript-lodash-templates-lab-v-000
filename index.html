@@ -5,7 +5,47 @@
   </head>
   <body>
     <main>
+      <form onsubmit="createPost();return false;" id="post-form">
+        Title: <input type="text" id="postTitle"><br>
+        Author: <input type="text" id="postAuthor"><br>
+        Post Content: <textarea id="postContent"></textarea><br>
+        <input type="submit">
+      </form><br>
     </main>
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+      
+    <script id="page-template" type="text/x-lodash-template">
+      <div id="sidebar"></div>
+      <div id="post"></div>
+    </script>
+
+    <script id="post-template" type="text/x-lodash-template"> <!-- goes in 'posts'' div -->
+      <article>
+        <header><h2><%- title %></h2></header><br>
+        <p><%- content %></p>
+        <footer><small>Posted by: <%- author %></small></footer><br></br>
+        <div id="post-<%-counter%>-comments"></div>
+      </article>
+    </script>
+
+    <script id="comments-template" type="text/x-lodash-template"> <!-- goes in post-comments div -->
+      <h4>Comments</h4>
+      <div id="comments">
+        
+      </div>
+      <form onsubmit="postComment();return false;" id="comment-form">
+        Author: <input type="text" id="commenter"><br>
+        Content: <input type="textarea" id="comment"><br>
+        <input type="submit">
+      </form><br>
+    </script>
+
+    <script id="comment-template" type="text/x-lodash-template"> <!-- goes in comment div -->
+      <p><%- comment %></p>
+      <footer><small>posted by: <%- commenter %></small></footer><br>
+    </script>
+
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
