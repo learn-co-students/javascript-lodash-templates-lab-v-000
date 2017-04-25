@@ -22,6 +22,8 @@ function postComment() {
   // values
   var comment = document.getElementById('comment').value;
   var commenter = document.getElementById('commenter').value;
+  document.getElementById('comment').value = ''
+  document.getElementById('commenter').value = ''
   // template functions
   var commentTemplateFn = _.template(document.getElementById('comment-template').innerHTML);
   // JSON
