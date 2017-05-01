@@ -1,5 +1,6 @@
-function createPost(e) {
-    e.preventDefault();
+function createPost() {
+    
+//    e.preventDefault();
     // post
     const post_template = document.getElementById("post-template").innerHTML;
 
@@ -22,8 +23,8 @@ function createPost(e) {
 
     document.getElementById("comment-section").innerHTML += comments_html;
 }
-function postComment(e){
-    e.preventDefault();
+function postComment(){
+//    e.preventDefault();
 
     const comment_template = document.getElementById("comment-template").innerHTML;
     const comment_template_fn = _.template(comment_template);

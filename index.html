@@ -8,7 +8,7 @@
     <body>
         <main>
 
-            <form id='post-form' onSubmit="createPost(event)">
+            <form id='post-form' onsubmit="createPost(); return false;">
                 Title: <input type="text" name="title" id="post-form-title">
                 Author: <input type="text" name="author" id="post-form-author">
                 Post: <input type="text" name="body" id="post-form-body">
@@ -33,7 +33,7 @@
         </script>
 
         <script id="comments-template" type="text/x-lodash-template">
-        <form onSubmit="postComment(event)" id='comment-form' >
+        <form onsubmit="postComment(); return false;" id='comment-form' >
                 Comment: <input type="text" name="body" id="comment-body">
                 Author: <input type="text" name="author" id="comment-author">
             <input type="submit">
