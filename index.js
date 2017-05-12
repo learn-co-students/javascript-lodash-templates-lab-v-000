@@ -9,10 +9,8 @@ function createPost(){
 
   document.getElementsByTagName("main")[0].innerHTML += pageTemplate();
 
-  postHTML = document.getElementById('post').innerHTML
-
-  postHTML= postTemplate({ 'title': title, 'body': body, 'poster': author });
-postHTML.getElementsByTagName("footer")[0].innerHTML = commentsTemplate()
+   document.getElementById('post').innerHTML = postTemplate({ 'title': title, 'body': body, 'poster': author });
+document.getElementById('post').getElementsByTagName("footer")[0].innerHTML = commentsTemplate()
 }
 
 function postComment(){
