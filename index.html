@@ -8,6 +8,24 @@
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
+
+    <article>
+     <div id="page-template">
+      
+   </div>
+  </article>
+
+    <script id="post-template" type="text/x-lodash-template">
+    <div class="post">
+     <div class="post-title"><h1><%= postTitle %></h1></div>
+      <div class="post-author">Posted By: <%= postAuthor %></div>
+       <div class="post-body">
+        <p><%= postBody %></p>
+       </div>
+      </div>
+    </div>
+  </div>
+  </script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
