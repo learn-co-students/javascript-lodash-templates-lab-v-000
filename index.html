@@ -5,6 +5,13 @@
   </head>
   <body>
     <main>
+      <form id="post-form" onsubmit="createPost();return false;">
+        Title: <input type="text" id="postTitle"><br>
+        Author: <input type="text" id="postAuthor"><br>
+        Post: <input type="text-area" id="postBody"><br>
+        <input type="submit">
+      </form>
+    </main>
 
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
@@ -34,16 +41,6 @@
       <p><%= comment %></p>
       <footer><%= commenterName %></footer>
     </script>
-
-    <script id="post-form" type="text/x-lodash-template">
-      <form onsubmit="createPost();return false;">
-        Title: <input type="text" id="postTitle"><br>
-        Author: <input type="text" id="postAuthor"><br>
-        Post: <input type="text-area" id="postBody"><br>
-        <input type="submit">
-      </form>
-    </script>
-    </main>
 
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
