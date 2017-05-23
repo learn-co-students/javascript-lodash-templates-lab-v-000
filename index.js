@@ -7,7 +7,7 @@ function createPost() {
   var postAuthor = document.getElementById("postAuthor").value;
   var postBody = document.getElementById("postBody").value;
 
-  
+
 }
 
 function postComment() {
@@ -17,5 +17,6 @@ function postComment() {
   var comment = document.getElementById("comment").value;
 
   var commentSection = document.getElementById("comments");
- commentSection.innerHTML += commentTemplate({ 'commenter': commenterName, 'comment': comment });
+
+  commentSection.innerHTML += commentTemplate({ 'commenter': commenterName, 'comment': comment });
 }
