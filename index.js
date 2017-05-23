@@ -1,23 +1,21 @@
 function createPost() {
-  var title = document.getElementById("postTitle").value;
-  var author = document.getElementById("postAuthor").value;
-  var body = document.getElementById("postBody").value;
+  var pageTemplate = _.template(document.getElementById("page-template").innerHTML);
+  var postTemplate = _.template(document.getElementById("post-template").innerHTML);
+  var commentsTemplate = _.template(document.getElementById("comments-template").innerHTML);
 
-  //insert post into "posts" div in this format:
+  var postTitle = document.getElementById("postTitle").value;
+  var postAuthor = document.getElementById("postAuthor").value;
+  var postBody = document.getElementById("postBody").value;
 
-  var postTemplate = document.getElementById("post-template").innerHTML;
-
-  var templateFn = _.template(postTemplate);
-
-  var postDiv = document.getElementById("posts");
-
-   var templateHTML = templateFn({ 'postTitle': postTitle, 'postAuthor': postAuthor, 'postBody': postBody });
-
-   postDiv.innerHTML += templateHTML;
-
+  
 }
 
 function postComment() {
+  var commentTemplate = _.template(document.getElementById("comment-template").innerHTML);
+
   var commenter = document.getElementById("commenterName").value;
-  var comment = document.getElementById("commentText").value;
+  var comment = document.getElementById("comment").value;
+
+  var commentSection = document.getElementById("comments");
+ commentSection.innerHTML += commentTemplate({ 'commenter': commenterName, 'comment': comment });
 }
