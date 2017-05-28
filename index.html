@@ -5,12 +5,14 @@
   </head>
   <body>
     <main>
-      <form id='post-form' onsubmit="createPost();return false;">
-        Title: <input type="text" id="titleText"><br>
-        Body: <input type="textarea" id="bodyText"><br>
-        Author: <input type="textarea" id="authorText"><br>
-        <input type="submit">
-      </form>
+      <div id="page">
+        <form id='post-form' onsubmit="createPost();return false;">
+          Title: <input type="text" id="titleText"><br>
+          Body: <input type="textarea" id="bodyText"><br>
+          Author: <input type="textarea" id="authorText"><br>
+          <input type="submit">
+        </form>
+      </div>
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
@@ -25,19 +27,23 @@
       <div id="post"></div>
     </script>
     <script id="post-template" type="text/x-lodash-template">
-      <article>
-        <header>Title: <%= postTitle %></header>
-        <div><%= postBody %></div>
-        <footer>by <%= postAuthor %></footer>
-      </article>
+      <div id='postComments'>
+        <article>
+          <header>Title: <%= postTitle %></header>
+          <div><%= postBody %></div>
+          <footer>by <%= postAuthor %></footer>
+        </article>
+      </div>
     </script>
     <script id="comments-template" type="text/x-lodash-template">
-      <div id="comments">
-        <form onsubmit="postComment();return false;">
-           Name: <input type="text" id="commenterName"><br>
-           Comment: <input type="textarea" id="commentText"><br>
-           <input type="submit">
-         </form>
+      <div id="commentList">
+        <div id="comments">
+          <form onsubmit="postComment();return false;">
+             Name: <input type="text" id="commenterName"><br>
+             Comment: <input type="textarea" id="commentText"><br>
+             <input type="submit">
+           </form>
+         </div>
        </div>
     </script>
     <script id="comment-template" type="text/x-lodash-template">
@@ -45,13 +51,9 @@
         <div class="comment-body"><%- comment %></div>
         <footer class="commenter">
           <p>
-            <span class="posted-by">Posted By: </span>
-            <% if(commenter !== '') { %>
-            <%= commenter %>
-            <% } else { %>
-            Anonymous
-            <% } %>
-          </p>
+         <span class="posted-by">Posted By: </span>
+         <%- commenter %>
+        </p>
         </footer>
       </div>
     </script>
