@@ -4,7 +4,46 @@
     <title>JavaScript lodash Templates Lab</title>
   </head>
   <body>
-    <main>
+  <main>
+    <script id="page-template" type="text/x-lodash-template">
+      <div id="sidebar">
+        <aside id="widget_1">This is the sidebar</aside>
+      </div>
+      <div id="post"></div>
+    </script>
+
+      <form onsubmit="createPost();return false;" id="post-form">
+        Author: <input type="text" id="postAuthor"><br>
+        Title: <input type="text" id="postTitle"><br>
+        Post: <input type="textarea" id="postText"><br>
+        <input type="submit">
+      </form>
+
+      <script id="post-template" type="text/x-lodash-template">
+        <article>
+          <header><h2><%- postTitle %></h2><header>
+          <p><%- postText %></p>
+          <footer>By: <%= postAuthor %></footer>
+        </article>>
+      </script>
+
+      <script id="comments-template" type="text/x-lodash-template">
+        <div id="comments">
+          <form onsubmit="postComment();return false;" id="postComment">
+            Name: <input type="text" id="commenterName"><br>
+            Comment: <input type="textarea" id="commentText"><br>
+            <input type="submit">
+          </form>
+        </div>
+      </script>
+
+      <script id="comment-template" type="text/x-lodash-template">
+        <div>
+          <p><%= commentText %></p>
+          <footer><%= commenterName %></footer>
+        </div>
+      </script>
+
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
