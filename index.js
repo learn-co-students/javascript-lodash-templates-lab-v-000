@@ -12,7 +12,7 @@ function createPost() {
     var postAuthor = document.getElementById("postAuthor").value;
     var postText = document.getElementById("postText").value;
     
-    //add template to gage instad of replacing inner html
+    //add template to page instad of replacing inner html
     document.getElementsByTagName("main")[0].innerHTML += pageTemplate();
     
     //fill in postTemplate with collected information
