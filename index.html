@@ -5,9 +5,60 @@
   </head>
   <body>
     <main>
+      <script id="page-template" type="text/x-lodash-template"> //page blog,w/sidebar & post
+        <div id="post">
+        </div>
+        <div id="sidebar">
+          <section id="sidebarItem1"></section>
+          <section id="sidebarItem2"></section>
+        </div>
+      </script>
+
+
+      <script id="post-template" type="text/x-lodash-template"> // blog itself header & footer
+          <article>
+            <header>
+              <p><%= title %></p>
+            </header>
+            <footer>
+              <p><%= author %></p>
+            </footer>
+
+          </article>
+      </script>
+
+
+    <script id="comments-template" type="text/x-lodash-template"> //holds all the comments-template
+    <div id="comments">
+    </div>
+      <form onsubmit="postComment();return false;">
+      Commenter Name: <input type="text" id="commenterName"><br>
+      Commenter Text: <input type="textarea" id="commenterText"><br>
+      <input type="submit">
+      </form>
+    </script>
+
+    <script id="comment-template" type="text/x-lodash-template">//individual template //4
+      <p><%= comment_text %></p>
+
+      <footer>
+        <p><%= commenter_name %></p>
+      </footer>
+    </script>
+
+    <form id="post-form" onsubmit="createPost();return false;">
+    Title: <input type="text" id="postTitle"><br>
+    Author: <input type="textarea" id="postAuthor"><br>
+    <input type="submit">
+    </form>
+
+
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
+
+
+
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
