@@ -7,7 +7,7 @@
     <main id="body">
     </main>
 
-    <script id="page-template", type="text/x-lodash-template">
+    <script id="page-template" type="text/x-lodash-template">
       <div id="post"></div>
       <div id="sidebar"></div>
     </script>
@@ -20,7 +20,7 @@
       <footer> <%= post_author %> </footer>
     </script>
 
-    <script id="comments-template", type="text/x-lodash-template">
+    <script id="comments-template" type="text/x-lodash-template">
       <div id="comments"></div>
       <form onsubmit="postComment();return false;">
         Name: <input type="text" id="commenterName" /><br />
@@ -29,12 +29,12 @@
       </form>
     </script>
 
-    <script id="comment-template", type="text/x-lodash-template">
+    <script id="comment-template" type="text/x-lodash-template">
       <p> <%= comment %> </p>
       <footer> <%= commenter %> </footer>
     </script>
 
-    <script id="post-form", type="text/x-lodash-template">
+    <script id="post-form" type="text/x-lodash-template">
       <form onsubmit="postPost();return false;">
         Title: <input type="text" id="title" /><br />
         Body: <input type="text", id="body" /><br />
