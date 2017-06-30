@@ -4,8 +4,41 @@
     <title>JavaScript lodash Templates Lab</title>
   </head>
   <body>
+    <form id='post-form' onsubmit="event.preventDefault();createPost();">
+      name <input type="text" id="post-name">
+      author <input type="text" id="post-author">
+      content <input type="text" id="post-content">
+      <input type="submit">
+    </form>
     <main>
+      <div id="post-container"></div>
     </main>
+    <script id="page-template" type="text/x-lodash-template">
+      <div id="post"></div>
+      <div id="sidebar"></div>
+    </script>
+    <script id="post-template" type="text/x-lodash-template">
+        <header><%- name %></header>
+        <article><%- content %></article>
+        <footer>By: <%- author %></footer>
+
+    </script>
+    <script id="comments-template" type="text/x-lodash-template">
+      <form onsubmit="postComment();event.preventDefault()" id='comment-form'>
+        author <input type="text" id="comment-author">
+        content <input type="text" id="comment-content">
+        <input type="submit">
+      </form>
+      <div id="comments"></div>
+    </script>
+    <script id="comment-template" type="text/x-lodash-template">
+      <div id="comment">
+        <header><%- name %></header>
+        <article><%- content %></article>
+        <footer>By: <%- author %></footer>
+
+      </div>
+    </script>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
