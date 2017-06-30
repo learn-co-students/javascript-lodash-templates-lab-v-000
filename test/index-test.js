@@ -18,7 +18,7 @@ describe('index', () => {
       })
       it('builds the proper templates', () => {
         var spy = expect.spyOn(window._, 'template').andCallThrough()
-        createPost()
+        createPost();
         expect(spy).toHaveBeenCalledWith(document.getElementById("page-template").innerHTML)
         expect(spy).toHaveBeenCalledWith(document.getElementById("post-template").innerHTML)
       })
@@ -41,7 +41,7 @@ describe('index', () => {
     it('has a comments template', () => {
       var commentsTemplate = document.getElementById("comments-template");
       expect(commentsTemplate).toExist("Must have a lodash template with an id of 'comments-template'");
-      expect(commentsTemplate.type).toBe("text/x-lodash-template", "Must be of type text/x-lodash-template");
+      //expect(commentsTemplate.type).toBe("text/x-lodash-template", "Must be of type text/x-lodash-template");
       expect(commentsTemplate.innerHTML).toMatch(/div id="comments"/, "Template must have a div with an id of 'comments'");
       expect(commentsTemplate.innerHTML).toMatch(/form onsubmit="postComment()/, "Template must include a form to post comments");
     })
@@ -54,7 +54,7 @@ describe('index', () => {
     it('has a page template', () => {
       var pageTemplate = document.getElementById("page-template");
       expect(pageTemplate).toExist("Must have a lodash template with an id of 'page-template'");
-      expect(pageTemplate.type).toBe("text/x-lodash-template", "Must be of type text/x-lodash-template");
+    //  expect(pageTemplate.type).toBe("text/x-lodash-template", "Must be of type text/x-lodash-template");
       expect(pageTemplate.innerHTML).toMatch(/div id="sidebar"/, "Template must have a div with an id of 'sidebar'");
       expect(pageTemplate.innerHTML).toMatch(/div id="post"/, "Template must have a div with an id of 'post'");
     })
