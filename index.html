@@ -5,7 +5,36 @@
   </head>
   <body>
     <main>
+      <form id="post-form" onsubmit="createPost(); return false;">
+        <label>Title: </label><input type="text" id="postTitle"><br>
+        <label>Content: </label><textarea id="postContent" rows="3" cols="20"></textarea><br>
+        <label>Poster: </label><input type="text" id="postAuthor"><br>
+        <input type="submit">
+      </form>
     </main>
+    <script id="page-template" type="text/x-lodash-template">
+      <div id="sidebar"></div>
+      <div id="post"></div>
+    </script>
+    <script id="post-template" type="text/x-lodash-template">
+      <article>
+        <header><h2><%- postTitle %></h2></header>
+        <p><%- postContent %></p>
+        <footer>Posted By: <%- postAuthor %></footer>
+      </article><br />
+    </script>
+    <script id="comments-template" type="text/x-lodash-template">
+      <div id="comments"></div>
+      <form onsubmit="postComment(); return false;">
+        <label>Comment: </label><input type="text" id="commentContent"><br>
+        <label>Poster: </label><input type="text" id="commentAuthor"><br>
+        <input type="submit">
+      </form>
+    </script>
+    <script id="comment-template" type="text/x-lodash-template">
+      <p><%= commentContent %></p>
+      <footer><%= commentAuthor %></footer>
+    </script>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
