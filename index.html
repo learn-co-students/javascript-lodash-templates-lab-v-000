@@ -3,9 +3,65 @@
   <head>
     <title>JavaScript lodash Templates Lab</title>
   </head>
+
   <body>
+
     <main>
+      <form id="post-form" onSubmit="createPost();return false;">
+        Title: <input type="text" id="postTitle">
+        <br>
+        Post: <input type="textarea" id="postText">
+        <br>
+        Author: <input type="text" id="postAuthor">
+        <br>
+        <input type="submit">
+      </form>
     </main>
+
+    <script id="page-template" type="text/x-lodash-template">
+      <div id="sidebar"></div>
+      <div id="post"></div>
+    </script>
+
+    <script id="post-template" type="text/x-lodash-template">
+      <article>
+        <header><%- title %></header>
+        <br><br>
+        <%- text %>
+        <br><br>
+        <footer>
+          <span>Written by: <%- author %></span>
+        </footer>
+      </article>
+    </script>
+
+    <script id="comments-template" type="text/x-lodash-template">
+      <div id="comments">
+        <form onsubmit="postComment();return false;">
+          Name: <input type="text" id="commenterName">
+          <br>
+          Comment: <input type="textarea" id="commentText">
+          <br>
+          <input type="submit">
+        </form>
+      </div>
+    </script>
+
+    <script id="comment-template" type="text/x-lodash-template">
+      <div id="comment">
+        <%- comment %>
+        <br>
+        <footer>
+          <span>Posted By:</span>
+          <% if(commenter !== '') { %>
+            <%- commenter %>
+          <% } else { %>
+            Anonymous
+          <% } %>
+        </footer>
+      </div>
+    </script>
+
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
