@@ -23,7 +23,7 @@ function postComment() {
   //create template function
   var commentTemplate = _.template(document.getElementById("comment-template").innerHTML)
 
-  //get values
+  //get values from comments form
   var commentText = document.getElementById("commentText").value
   var commenterName = document.getElementById("commenterName").value
 
