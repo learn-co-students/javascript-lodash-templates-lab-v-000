@@ -5,6 +5,16 @@
   </head>
   <body>
     <main>
+      <form id="post-form" onSubmit="createPost()">
+      Title: <input type="text" id="title"><br>
+      Body: <input type="text" id="body"><br>
+      Author: <input type="text" id="auth"><br>
+
+      <input type="submit">
+      </form>
+
+
+
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
@@ -15,5 +25,60 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
+    <script id="page-template" type="text/x-lodash-template">
+          <div id="sidebar">
+          </div>
+
+          <div id="post">
+          </div>
+    </script>
+    <script id="post-template" type="text/x-lodash-template">
+      <article>
+        <header><h2><%= title %></h2></header>
+        <p>
+          <%= body %>
+        </p>
+        <footer><%= auth %></footer>
+      </article>
+
+      <div id="cmt">
+      </div>
+    </script>
+
+
+    <script id="comments-template" type="text/x-lodash-template">
+
+    <div id="comments">
+
+    <form onsubmit="postComment()">
+      Add comment: <input type="text" id="comment"><br>
+      Your name: <input type="text" id="commenter"><br>
+      <input type="submit">
+   </form>
+    </div>
+
+
+
+  </script>
+
+
+
+  <script id="comment-template" type="text/x-lodash-template">
+
+      <div><%= comment %></div>
+      <div>
+        <footer>
+          <span>Posted By: </span>
+          <%= commenter %>
+        </footer>
+      </div>
+
+</script>
+
+
+
+
+
+
   </body>
 </html>
