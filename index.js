@@ -1,28 +1,3 @@
-function apostComment() {
-	// Grabs the values of teh Comment Form
-  var commenter = document.getElementById("commenterName").value;
-  var comment = document.getElementById("commentText").value;
-
-  	// Grabs all the comments on this post
-  var comments = document.getElementById("comments");
-
-  	// Grabs the comment-template in string format
-  // var commentTemplate = document.getElementById("comment-template").innerHTML;
-
-  	// Creates a template function from the comment-template string
-  // var templateFn = _.template(commentTemplate);
-
-  	// Combines the top two commented out functions in one step...
-  var templateFn = _.template(document.getElementById("comment-template").innerHTML);
-
-  	// Creates a new Comment
-  var templateHTML = templateFn({ 'comment': comment, 'commenter': commenter
-});
-
-  	// Adds the new comment to all comments.
-  comments.innerHTML += templateHTML;
-}
-
 function createPost() {
     // Grabs the values of the Post Form
   var title = document.getElementById("postTitle").value;
