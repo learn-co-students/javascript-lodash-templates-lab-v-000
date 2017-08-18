@@ -13,37 +13,31 @@
         Author: <input type="text" id="commentAuthor"><br>
         <input type="submit">
       </form>
-      <div id="posts"></div>
     </main>
     <script id="page-template" type="text/x-lodash-template">
-      <div id="sidebar">
-      </div>
-      <div id="post">
-        <p>
-        <div> <%= ctitle %> </div>
-        <div> <%= cbody %> </div>
-        <div> <%= cauthor %> </div>
-        </p>
-      </div>
+      <div id="sidebar"></div>
+      <div id="post"></div>
     </script>
     <script id="post-template" type="text/x-lodash-template">
       <article>
-        <header></header>
-        <footer></footer>
+        <header><h2><%- ctitle %></h2><header>
+        <p><%- cbody %></p>
+        <footer>Posted by: <%= cauthor %></footer>
       </article>
     </script>
     <script id="comments-template" type="text/x-lodash-template">
       <div id="comments">
+        <form onsubmit="postComment();return false;">
+          Name: <input type="text" id="commenter"><br>
+          Comment: <input type="text" id="commentText"><br>
+          <input type="submit">
+        </form>
       </div>
-      <form id="comment-form" onsubmit="postComment();return false;">
-        <input type="submit">
-      </form>
     </script>
     <script id="comment-template" type="text/x-lodash-template">
-      <footer>
-      </footer>
+        <p><%= comment %></p>
+        <footer>Posted by: <%= commenter %></footer>
     </script>
-
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
