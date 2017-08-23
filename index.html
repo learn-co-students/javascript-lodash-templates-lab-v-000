@@ -10,6 +10,15 @@
     <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
+
+    <form id="post-form" onsubmit="postComment();return false;">
+    Title: <input type="text" id="postTitle"><br>
+    Body: <textarea rows="4" cols="50" id="postBody"></textarea><br>
+    Author: <input type="text" id="postAuthor"><br>
+    <input type="submit">
+  </form>
+
+
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/expect/umd/expect.min.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -17,3 +26,7 @@
     <script src="test/index-test.js"></script>
   </body>
 </html>
+
+Create a template with an id of page-template that will represent
+the page of a blog post, including a sidebar element and a post element
+that will hold our blog post.
