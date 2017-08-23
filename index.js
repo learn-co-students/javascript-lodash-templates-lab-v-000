@@ -9,6 +9,10 @@ function createPost() {
 
   document.getElementsByTagName("main")[0].innerHTML += pageTemplate();
 
+  var postHTML = postTemplate({"title": title, "body": body, "author": author});
+
+  postsDiv = document.getElementById("posts");
+  postsDiv.append(postHTML);
 }
 
 function postComment() {
@@ -21,7 +25,7 @@ function postComment() {
 
   var commentsDiv = document.getElementById("comments");
 
-  var templateHTML = templateFn({'comment': comment, 'commenter', commenter});
+  var templateHTML = templateFn({'comment': comment, 'commenter': commenter});
 
   commentsDiv.innerHTML += templateHTML;
 }
