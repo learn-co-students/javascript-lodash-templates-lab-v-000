@@ -16,7 +16,7 @@
     <script src="index.js"></script>
 
     <script id="page-template" type="text/x-lodash-template">
-      <div id="posts"></div>
+      <div id="post"></div>
       <div id="sidebar"></div>
     </script>
 
@@ -29,7 +29,7 @@
     </script>
 
     <script id="comments-template" type="text/x-lodash-template">
-      <form id ="comment-form" onsubmit="postComment();return false;">
+      <form onsubmit="postComment();return false;" id ="comment-form">
         Name: <input type="text" id="commenterName"><br>
         Comment: <input type="textarea" id="commentText"><br>
         <input type="submit">
@@ -40,7 +40,7 @@
     <script id="comment-template" type="text/x-lodash-template">
       <div class="comment">
         <div class="comment-body"><%- comment %></div>
-        <div class="commenter">
+        <footer>
           <p>
             <span class="posted-by">Posted By: </span>
             <% if(commenter !== '') { %>
@@ -49,7 +49,7 @@
             Anonymous
             <% } %>
           </p>
-        </div>
+        </footer>
       </div>
     </script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
