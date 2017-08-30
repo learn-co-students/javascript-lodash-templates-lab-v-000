@@ -5,9 +5,57 @@
   </head>
   <body>
     <main>
-    </main>
+      <form  id="post-form" onsubmit="createPost();return false;">
+        Title: <input type="text" id="postTitle"><br>
+        Body: <input type="textarea" id="postBody"><br>
+        Author: <input type="textarea" id="postAuthor"><br>
+        <input type="submit">
+      </form>
+
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
+
+    <script id="page-template" type="text/x-lodash-template">
+        <div id="sidebar"></div>
+        <div id="post"></div>
+    </script>
+
+    <script id="post-template" type="text/x-lodash-template">
+      <article>
+        <header><%= title %></header>
+        <h5><%= post %></h5>
+        <footer><%= author %></footer>
+      </article>
+    </script>
+
+    <script id="comment-template" type="text/x-lodash-template">
+      <footer>
+      <div><%= comment %></div>
+      <div>
+        <p>
+          <span class="posted-by">Posted By: </span>
+          <% if(commenter !== '') { %>
+            <%= commenter %>
+          <% } else { %>
+            Anonymous
+          <% } %>
+        </p>
+      </div>
+    </div>
+      </footer>
+    </script>
+
+    <script id="comments-template" type="text/x-lodash-template">
+    <div id="comments">
+      <form onsubmit="postComment();return false;" id="comment-form">
+        Name: <input type="text" id="commenterName"><br>
+        Comment: <input type="textarea" id="commenterText"><br>
+        <input type="submit">
+      </form>
+    </script>
+
+  </main>
+
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
@@ -16,53 +64,6 @@
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
 
-    <form onsubmit="createPost();return false;" id="post-form">
-      Title: <input type="text" id="postTitle"><br>
-      Body: <input type="textarea" id="postBody"><br>
-      Author: <input type="textarea" id="postAuthor"><br>
-      <input type="submit">
-    </form>
-
-    <form onsubmit="postComment();return false;" id="comment-form">
-      Name: <input type="text" id="commenterName"><br>
-      Comment: <input type="textarea" id="commenterText"><br>
-      <input type="submit">
-    </form>
-
-    <script id="page-template" type="text/x-lodash-template">
-        <div class="sidebar" id="sidebar"></div>
-        <div class="post"></div>
-    </script>
-
-    <script id="post-template" type="text/x-lodash-template">
-    <div class="post">
-      <article>
-      <div class="header"><%= title %></div>
-        <div class="body"><%= body %></div>
-        <div class="footer"><%= author %></div>
-      </article>
-      </div>
-    </script>
-
-    <script id="comment-template" type="text/x-lodash-template">
-      <footer</footer>
-    </script>
-
-    <script id="comments-template" type="text/x-lodash-template">
-    <div class="comments" id="comments">
-      <div class="comment-body"><%- comment %></div>
-      <div class="commenter">
-        <p>
-          <span class="posted-by">Posted By: </span>
-          <% if(commenter !== '') { %>
-            <%- commenter %>
-          <% } else { %>
-            Anonymous
-          <% } %>
-        </p>
-      </div>
-    </div>
-    </script>
 
   </body>
 </html>

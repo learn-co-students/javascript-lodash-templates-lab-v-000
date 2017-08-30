@@ -16,14 +16,21 @@ function postComment() {
 
 function createPost() {
   var title = document.getElementById("postTitle").value;
-  var body = document.getElementById("postBody").value;
+  var post = document.getElementById("postBody").value;
   var author = document.getElementById("postAuthor").value;
+
+  var pageTemplate = document.getElementById("page-template").innerHTML;
   var postTemplate = document.getElementById("post-template").innerHTML;
   //create template function
-  var templateFn = _.template(postTemplate);
+  var pageFn = _.template(pageTemplate);
+  var pageDiv = document.getElementsByTagName("main")[0].innerHtml;
+
+  var postFn = _.template(postTemplate);
   var postDiv = document.getElementById("post");
   //execute template function with JSON object for the interpolated values
-  var templateHTML = templateFn({ 'title': title, 'body': body, 'author': author });
+  var postHTML = postFn({ 'title': title, 'post': post, 'author': author });
+  // var pageHTML = pageFn({'post': body, 'sidebar': "test"})
   //append rather than replace!
-  postDiv.innerHTML = templateHTML;
+  pageDiv.innerHTML += pageFn();
+  postDiv.innerHTML += postHTML;
 }
