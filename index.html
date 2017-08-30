@@ -23,24 +23,32 @@
       <input type="submit">
     </form>
 
+    <div id="posts"></div>
+
+    <form onsubmit="postComment();return false;" id="comment-form">
+      Name: <input type="text" id="commenterName"><br>
+      Comment: <input type="textarea" id="commenterText"><br>
+      <input type="submit">
+    </form>
+
+    <div id="comments"></div>
+
     <script id="page-template" type="text/x-lodash-template">
-      <div class="page">
-        <div class="sidebar"><%= sidebar %></div>
-        <script id="post-template" type="text/x-lodash-template">
-        <div class="post">
+        <div class="sidebar" id="sidebar"><%= sidebar %></div>
+        <div class="post"><%= post-template%></div>
+    </script>
 
-        </div>
-        </script>
-
+    <script id="post-template" type="text/x-lodash-template">
+    <div class="post">
+      <article>
+        <div class="header"><%= title %></div>
+        <div class="footer"><%= author %></div>
+      </article>
       </div>
     </script>
 
-
     <script id="comment-template" type="text/x-lodash-template">
-    </script>
-
-    <script id="comments-template" type="text/x-lodash-template">
-      <div class="comments">
+      <div class="comment">
         <div class="comment-body"><%- comment %></div>
         <div class="commenter">
           <p>
@@ -54,6 +62,10 @@
         </div>
       </div>
     </script>
+
+
+    <script id="comments-template" type="text/x-lodash-template">
+          </script>
 
   </body>
 </html>
