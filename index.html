@@ -16,15 +16,25 @@
     <script>mocha.setup('bdd');</script>
     <script src="test/index-test.js"></script>
 
+    <form onsubmit="createPost();return false;" id="post-form">
+      Title: <input type="text" id="postTitle"><br>
+      Body: <input type="textarea" id="postBody"><br>
+      Author: <input type="textarea" id="postAuthor"><br>
+      <input type="submit">
+    </form>
+
     <script id="page-template" type="text/x-lodash-template">
       <div class="page">
-        <div class="sidebar"</div>
-        <div class="post"</div>
+        <div class="sidebar"><%= sidebar %></div>
+        <script id="post-template" type="text/x-lodash-template">
+        <div class="post">
+
+        </div>
+        </script>
+
       </div>
     </script>
 
-    <script id="post-template" type="text/x-lodash-template">
-    </script>
 
     <script id="comment-template" type="text/x-lodash-template">
     </script>
