@@ -5,10 +5,11 @@
   </head>
   <body>
     <main>
-      <form  id="post-form" onsubmit="createPost();return false;">
+
+      <form id="post-form" onsubmit="createPost();return false;">
         Title: <input type="text" id="postTitle"><br>
-        Body: <input type="textarea" id="postBody"><br>
-        Author: <input type="textarea" id="postAuthor"><br>
+        Body: <input type="text" id="postBody"><br>
+        Author: <input type="text" id="postAuthor"><br>
         <input type="submit">
       </form>
 
@@ -23,7 +24,7 @@
     <script id="post-template" type="text/x-lodash-template">
       <article>
         <header><%= title %></header>
-        <h5><%= post %></h5>
+        <h5><%= body %></h5>
         <footer><%= author %></footer>
       </article>
     </script>
@@ -31,25 +32,15 @@
     <script id="comment-template" type="text/x-lodash-template">
       <footer>
       <div><%= comment %></div>
-      <div>
-        <p>
-          <span class="posted-by">Posted By: </span>
-          <% if(commenter !== '') { %>
-            <%= commenter %>
-          <% } else { %>
-            Anonymous
-          <% } %>
-        </p>
-      </div>
-    </div>
+      <div>Posted By: <%= commenter %></div>
       </footer>
     </script>
 
     <script id="comments-template" type="text/x-lodash-template">
     <div id="comments">
-      <form onsubmit="postComment();return false;" id="comment-form">
+      <form onsubmit="postComment();return false;">
         Name: <input type="text" id="commenterName"><br>
-        Comment: <input type="textarea" id="commenterText"><br>
+        "Comment": <input type="textarea" id="commentText"><br>
         <input type="submit">
       </form>
     </script>

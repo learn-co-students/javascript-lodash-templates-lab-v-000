@@ -1,36 +1,37 @@
-function postComment() {
-  var commenter = document.getElementById("commenterName").value;
-  var comment = document.getElementById("commentText").value;
-  //insert comment into "comments" div in this format:
-  //<div class="comment"><p>comment</p><p>Posted By: <span class="commenter">commenter</span></p></div>
-  // var commentTemplate = '<div class="comment"><p><%= comment %></p><p>Posted By: <span class="commenter"><%= commenter %></span></p></div>';
-  var commentTemplate = document.getElementById("comment-template").innerHTML;
-  //create template function
-  var templateFn = _.template(commentTemplate);
-  var commentsDiv = document.getElementById("comments");
-  //execute template function with JSON object for the interpolated values
-  var templateHTML = templateFn({ 'comment': comment, 'commenter': commenter });
-  //append rather than replace!
-  commentsDiv.innerHTML += templateHTML;
-}
-
 function createPost() {
+  var pageTemplate = document.getElementById("page-template").innerHTML;
+  var pageFn = _.template(pageTemplate);
+  var pageDiv = document.getElementsByTagName("main")[0];
+  pageDiv.innerHTML += pageFn();
+
   var title = document.getElementById("postTitle").value;
   var post = document.getElementById("postBody").value;
   var author = document.getElementById("postAuthor").value;
 
-  var pageTemplate = document.getElementById("page-template").innerHTML;
   var postTemplate = document.getElementById("post-template").innerHTML;
-  //create template function
-  var pageFn = _.template(pageTemplate);
-  var pageDiv = document.getElementsByTagName("main")[0].innerHtml;
-
   var postFn = _.template(postTemplate);
   var postDiv = document.getElementById("post");
+  var postHTML = postFn({ 'title': title, 'body': post, 'author': author });
+  postDiv.innerHTML = postHTML;
+
+  var commentsTemplate = document.getElementById("comments-template").innerHTML;
+  var commentsFn = _.template(commentsTemplate);
+  var commentsDiv = document.getElementsByTagName("footer")[0];
+  commentsDiv.innerHTML = commentsFn();
+
+  // retrieve values from post form
+  // declare the scripts that are templates
+  //create template function
   //execute template function with JSON object for the interpolated values
-  var postHTML = postFn({ 'title': title, 'post': post, 'author': author });
-  // var pageHTML = pageFn({'post': body, 'sidebar': "test"})
   //append rather than replace!
-  pageDiv.innerHTML += pageFn();
-  postDiv.innerHTML += postHTML;
+}
+
+function postComment() {
+  var commenter = document.getElementById("commenterName").value;
+  var commentText = document.getElementById("commentText").value;
+  var commentTemplate = document.getElementById("comment-template").innerHTML;
+  var commentFn = _.template(commentTemplate);
+  var commentDiv = document.getElementById("comments");
+  var commentHTML = commentFn({ 'comment': commentText, 'commenter': commenter });
+  commentDiv.innerHTML += commentHTML;
 }
