@@ -1,9 +1,3 @@
-function init() { 
-  var commentForm = document.getElementById('comment-form');
-  commentForm.style.display = "none";
-}
-
-
 function createPost() {
   
   var postForm = document.getElementById('post-form');
@@ -12,10 +6,12 @@ function createPost() {
   var postAuthor = document.getElementById('post-author').value;
   var pageTemplate = document.getElementById('page-template').innerHTML;
   var postTemplate = document.getElementById('post-template').innerHTML;
-  var commentForm = document.getElementById('comment-form');
+  var commentTemplate = document.getElementById('comment-template').innerHTML;
 
+  var commentTemplateFn = _.template(commentTemplate);
   var pageTemplateFn = _.template(pageTemplate);
   var postTemplateFn = _.template(postTemplate);
+  var commentHTML = commentTemplateFn();
   var pageHTML = pageTemplateFn();
   var postHTML = postTemplateFn({'postTitle': postTitle, 'postBody': postBody, 'postAuthor': postAuthor});
   
@@ -25,26 +21,25 @@ function createPost() {
   postPoint.innerHTML += postHTML;
   postForm.style.display = "none";
   var commentFormArea = document.getElementById('comment-form-area');
-  commentForm.style.display = "block"; 
+  commentFormArea.innerHTML += commentHTML;
 }
 
 function postComment() {
 
   var commentsArea = document.getElementById('comments-area');
-
+ 
   var commenter = document.getElementById('commenter-name').value;
   var comment = document.getElementById('comment').value;
 
-  var commentTemplate = document.getElementById('comment-template').innerHTML;
+  var commentTemplate = document.getElementById('comments-template').innerHTML;
   var commentTemplateFn = _.template(commentTemplate);
   var commentHTML = commentTemplateFn({'comment': comment,'commenter': commenter});
-
   commentsArea.innerHTML += commentHTML;
-  
+
   document.getElementById('commenter-name').value = "";
   document.getElementById('comment').value = "";
 
 }
 
-window.onload= init;
+
 
