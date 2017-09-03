@@ -35,16 +35,16 @@
       <input type="submit">
     </form>
 
-       <form id="comment-form" onsubmit="postComment();return false;">
-        <h2>Add a Comment Below</h2>
-          Name: <input type="text" id="commenter-name"><br>
-          Comment: <input type="textarea" id="comment-text"><br>
-        <input type="submit">
-      </form>
+    <!-- comment form -->
 
-    
+    <form id="comment-form" onsubmit="postComment();return false;">
+      <h2>Add a Comment Below</h2>
+        Name: <input type="text" id="commenter-name"><br><br>
+        Comment: <input type="text" id="comment"><br><br>
+      <input type="submit">
+    </form>
 
-
+  
     <!-- TEMPLATES -->
 
     <script id="page-template" type="text/x-lodash-template">
@@ -70,27 +70,16 @@
     </article>
     </script>
 
-    <!--
-
-    <script id="comment-form" type="text/x-lodash-template">
-      <form onsubmit="postComment();return false;">
-        <h2>Add a Comment Below</h2>
-          Name: <input type="text" id="commenter-name"><br>
-          Comment: <input type="textarea" id="comment-text"><br>
-        <input type="submit">
-      </form>
-    </script>
-
--->
     <script id="comment-template" type="text/x-lodash-template">
       <div class="comment">
-        <div class="comment-body" style="text: red"><%- comment %></div>
+        <div class="comment-body" style="color:red"><%- comment %></div>
           <div class="commenter">
-            <footer id="posted-by">Posted By: </footer>
+            <footer id="posted-by" tyle="color:red">Posted By: </footer>
             <%- commenter %>
           </div>
         </div>
       </div>
+      <hr><br>
     </script>
 
     
