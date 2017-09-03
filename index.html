@@ -22,7 +22,7 @@
 
     <div id="loading-point">
     </div>
-     
+
     
     <!-- post form -->
        
@@ -64,23 +64,29 @@
     </script>
 
         <!-- comment form -->
-    <script id="comment-template" type="text/x-lodash-template">
-    <form id="comment-form" onsubmit="postComment();return false;">
+    <script id="comments-template" type="text/x-lodash-template">
+    <div id="comments">
+    <form onsubmit="postComment();return false;" id="comment-form" >
       <h2>Add a Comment Below</h2>
         Name: <input type="text" id="commenter-name"><br><br>
         Comment: <input type="text" id="comment"><br><br>
+        <footer></footer>
       <input type="submit">
     </form>
+    </div>
     </script>
 
-    <script id="comments-template" type="text/x-lodash-template">
-      <div class="comment" style="border: 1px solid gray;">
+
+    <script id="comment-template" type="text/x-lodash-template">
+    
+          <div class="comment" style="border: 1px solid gray;">
         <div class="comment-body" style="color:red; padding: 10px;"><%- comment %></div>
           <div class="commenter">
             <footer id="posted-by" style="color:red; padding: 10px">Posted By:
             <%- commenter %></footer>
           </div>
         </div>
+      </div>
       </div>
     <br>
     </script>

@@ -6,7 +6,8 @@ function createPost() {
   var postAuthor = document.getElementById('post-author').value;
   var pageTemplate = document.getElementById('page-template').innerHTML;
   var postTemplate = document.getElementById('post-template').innerHTML;
-  var commentTemplate = document.getElementById('comment-template').innerHTML;
+  //var commentTemplate = document.getElementById('comment-template').innerHTML;
+  var commentTemplate = document.getElementById('comments-template').innerHTML;
 
   var commentTemplateFn = _.template(commentTemplate);
   var pageTemplateFn = _.template(pageTemplate);
@@ -31,7 +32,8 @@ function postComment() {
   var commenter = document.getElementById('commenter-name').value;
   var comment = document.getElementById('comment').value;
 
-  var commentTemplate = document.getElementById('comments-template').innerHTML;
+  //var commentTemplate = document.getElementById('comments-template').innerHTML;
+  var commentTemplate = document.getElementById('comment-template').innerHTML;
   var commentTemplateFn = _.template(commentTemplate);
   var commentHTML = commentTemplateFn({'comment': comment,'commenter': commenter});
   commentsArea.innerHTML += commentHTML;
