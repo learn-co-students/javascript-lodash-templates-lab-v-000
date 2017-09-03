@@ -6,14 +6,104 @@
   <body>
     <main>
     </main>
-    <script src="node_modules/lodash/lodash.min.js"></script>
+    <!--<script src="node_modules/lodash/lodash.min.js"></script> -->
     <script src="index.js"></script>
-    <!-- Open this file and call `mocha.run()` in console to run tests -->
+    <!-- Open this file and call `mocha.run()` in console to run tests ///
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
     <script src="node_modules/expect/umd/expect.min.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>mocha.setup('bdd');</script>
-    <script src="test/index-test.js"></script>
+    <script src="test/index-test.js"></script> -->
+    <script src="lodash.min.js"></script>
+
+
+    <!-- page start -->
+
+    <div id="loading-point">
+    </div>
+     
+    
+    <!-- post form -->
+       
+    <form id="post-form" onsubmit="createPost(); return false;">
+      <h2>Make a New Post</h2>
+      Title: <input type="text" id="post-title"><br><br>
+      <label for="body">Post:</label><br>
+      <textarea cols="30" rows="10" id="post-body"></textarea><br><br>
+      Author: <input type="text" id="post-author"><br><br>
+      <input type="submit">
+    </form>
+
+       <form id="comment-form" onsubmit="postComment();return false;">
+        <h2>Add a Comment Below</h2>
+          Name: <input type="text" id="commenter-name"><br>
+          Comment: <input type="textarea" id="comment-text"><br>
+        <input type="submit">
+      </form>
+
+    
+
+
+    <!-- TEMPLATES -->
+
+    <script id="page-template" type="text/x-lodash-template">
+    <div id="page">
+      <div id="post">
+      </div> 
+      <sidebar>
+      </sidebar>  
+    </div>
+    </script>
+
+
+    <script id="post-template" type="text/x-lodash-template">
+    <article>
+      <div id="post-template">
+        <header id="post-title"><h2><%- postTitle %></h2></header>
+        <p><div id="post-body"><%- postBody %></div><p>
+        <footer id="post-author"><em>Post Written by: <%- postAuthor %></em></footer><br>
+        <hr>
+        <div id="comments-area"></div>
+        <div id="comment-form-area"></div>  
+      </div>
+    </article>
+    </script>
+
+    <!--
+
+    <script id="comment-form" type="text/x-lodash-template">
+      <form onsubmit="postComment();return false;">
+        <h2>Add a Comment Below</h2>
+          Name: <input type="text" id="commenter-name"><br>
+          Comment: <input type="textarea" id="comment-text"><br>
+        <input type="submit">
+      </form>
+    </script>
+
+-->
+    <script id="comment-template" type="text/x-lodash-template">
+      <div class="comment">
+        <div class="comment-body" style="text: red"><%- comment %></div>
+          <div class="commenter">
+            <footer id="posted-by">Posted By: </footer>
+            <%- commenter %>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    
   </body>
 </html>
+
+
+<!-- Create a template with an id of page-template that will represent the page of a blog post, including a sidebar element and a post element that will hold our blog post.
+Create a post-template that will represent the blog post itself. It should have a header for the post title and a footer for the post author, and be wrapped in an article element.
+Create a comments-template that will be the container for the collection of comments on the blog post, as well as the comment form.
+Create a comment-template that will hold an individual comment. Should have a footer for the commenter name.
+Provide a form with an id of post-form to create a blog post with a title, body, and author. Submitting the form should build the page template with the post inside. Make the form submit using a createPost() function.
+Provide a form within the comments-template to post comments, including commenter name and comment text. These should use the template to insert individual comments into the comments section. You should be able to keep adding more comments. Make the form submit use a postComment() function. -->
+
+
+
