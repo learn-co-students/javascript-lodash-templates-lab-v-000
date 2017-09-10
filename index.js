@@ -19,7 +19,9 @@ function createPost() {
   var templatePageHTML = templatePageFn()
 
   //append rather than replace!
-  pageDiv.innerHTML = templateHTML;
+  postDiv.innerHTML += templateHTML;
+  pageDiv.innerHTML = templatePageHTML;
+  
 }
 
 function postComment() {
@@ -39,5 +41,5 @@ function postComment() {
   var templateHTML = templateFn({ 'comment': comment, 'commenter': commenter });
 
   //append rather than replace!
-  commentsDiv.innerHTML + templateHTML;
+  commentsDiv.innerHTML += templateHTML;
 }
