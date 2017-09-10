@@ -5,7 +5,7 @@ function createPost() {
   //insert blog into "blog" div in this format:
   //<div class="comment"><p>comment</p><p>Posted By: <span class="commenter">commenter</span></p></div>
   var postTemplate = document.getElementById("post-template").innerHTML;
-  var pageTemplate = document.getElementById('pageTemplate')
+  var pageTemplate = document.getElementById('page-template').innerHTML
   //create template string
   //create template function
   var templateFn = _.template(postTemplate);
