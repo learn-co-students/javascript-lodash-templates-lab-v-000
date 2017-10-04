@@ -5,6 +5,64 @@
   </head>
   <body>
     <main>
+
+      <form onsubmit="postComment();return false;">
+        Name: <input type="text" id="commenterName"><br>
+        Content: <input type="textarea" id="commentText"><br>
+        <input type="submit">
+      </form>
+      <div id="comments"></div>
+
+      <script id="page-template" type="text/x-lodash-template">
+        <div class="page">
+          <div id="post"></div>
+          <div id="sidebar"></div>
+        </div>
+      </script>
+
+      <form id="post-form" onsubmit="createPost();return false;">
+        Title: <input type="text" id="postTitle"><br>
+        Name: <input type="text" id="posterName"><br>
+        Comment: <input type="textarea" id="postText"><br>
+        <input type="submit">
+      </form>
+
+    <script id="post-template" type="text/x-lodash-template">
+    <div class="post">
+      <article>
+        <header class "post-title"><%= postTitle %></header>
+        <div class="post-body"><%= postBody %></div>
+        <footer class="poster"><%= poster %></footer>
+      </article>
+    </div>
+    </script>
+
+    <script id="comments-template" type="text/x-lodash-template">
+      <div id="comments">
+        <form onsubmit="postComment();return false;">
+          Name: <input type="text" id="commenterName"><br>
+          Content: <input type="textarea" id="commentText"><br>
+          <input type="submit">
+        </form>
+      </div>
+    </script>
+
+    <script id="comment-template" type="text/x-lodash-template">
+      <div class="comments">
+        <div class="comment-body"><%- comment %></div>
+        <div class="commenter">
+          <p>
+            <footer class="posted-by">Posted By: </footer>
+            <% if(commenter !== '') { %>
+            <%= commenter %>
+            <% } else { %>
+            Anonymous
+            <% } %>
+          </p>
+        </div>
+      </div>
+    </script>
+
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
