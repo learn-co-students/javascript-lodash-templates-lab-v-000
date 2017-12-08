@@ -1,49 +1,31 @@
+
 function createPost() {
-  var postT = document.getElementById("postTitle").value;
-  var postB = document.getElementById("postBody").value;
-  var postA = document.getElementById("postAuthor").value;
+  // create template functions
+  var pageTemplate = _.template(document.getElementById("page-template").innerHTML);
+  var postTemplate = _.template(document.getElementById("post-template").innerHTML);
+  var commentsTemplate = _.template(document.getElementById("comments-template").innerHTML);
 
-  //insert comment into "comments" div in this format:
-  //<div class="comment"><p>comment</p><p>Posted By: <span class="commenter">commenter</span></p></div>
+  // get blog values
+  var postTitle = document.getElementById("postTitle").value;
+  var postAuthor = document.getElementById("postAuthor").value;
+  var post = document.getElementById("postBody").value;
 
-  //create template string - THIS IS THE ONLY LINE WE HAVE TO CHANGE
-  //var commentTemplate = '<div class="comment"><p><%= comment %></p><p>Posted By: <span class="commenter"><%= commenter %></span></p></div>';
-  var postTemplate = document.getElementById("post-template").innerHTML;
-  var pageTemplate = document.getElementById("page-template").innerHTML;
-  var commentTemplate = document.getElementById("comments-template").innerHTML;
+  document.getElementsByTagName("main")[0].innerHTML += pageTemplate();
 
-  //create template function
-  var postTemplateFn = _.template(postTemplate);
-  var pageTemplateFn = _.template(pageTemplate);
+  var blogSection = postTemplate({ 'title': postTitle, 'body': post, 'poster': postAuthor });
+  var commentsSection = commentsTemplate();
+  var postElement = document.getElementById("post");
 
-  //execute template function with JSON object for the interpolated values
-  var postTemplateHTML = postTemplateFn({ 'postT': postT, 'postB': postB, 'postA': postA });
-  var pageTemplateHTML = pageTemplateFn({ 'postTemplate': postTemplateHTML, 'commentTemplate': commentTemplate});
-
-  //append rather than replace!
-  pageTemplate.innerHTML += pageTemplateHTML;
+  postElement.innerHTML = blogSection;
+  postElement.getElementsByTagName("footer")[0].innerHTML = commentsSection;
 }
 
 function postComment() {
-  var commenter = document.getElementById("commenterName").value;
-  var comment = document.getElementById("commentText").value;
+  var commentTemplate = _.template(document.getElementById("comment-template").innerHTML);
 
-  //insert comment into "comments" div in this format:
-  //<div class="comment"><p>comment</p><p>Posted By: <span class="commenter">commenter</span></p></div>
+  var commentText = document.getElementById("commentText").value;
+  var commenterName = document.getElementById("commenter").value;
 
-  //create template string - THIS IS THE ONLY LINE WE HAVE TO CHANGE
-  //var commentTemplate = '<div class="comment"><p><%= comment %></p><p>Posted By: <span class="commenter"><%= commenter %></span></p></div>';
-  var commentTemplate = document.getElementById("comment-template").innerHTML;
-  var postTemplate = document.getElementById("post-template").innerHTML;
-  var pageTemplate = document.getElementById("page-template").innerHTML;
-
-  //create template function
-  var templateFn = _.template(commentTemplate);
-  var pageTemplateFn = _.template(pageTemplate);
-
-  //execute template function with JSON object for the interpolated values
-  var templateHTML = templateFn({ 'comment': comment, 'commenter': commenter });
-  var pageTemplateHTML = pageTemplateFn({ 'postTemplate': postTemplate,'commentTemplate': templateHTML });
-  //append rather than replace!
-  pageTemplate.innerHTML += templateHTML;
+  var commentsSection = document.getElementById("comments");
+  commentsSection.innerHTML += commentTemplate({ 'commenter': commenterName, 'comment': commentText });
 }

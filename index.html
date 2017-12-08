@@ -4,64 +4,43 @@
     <title>JavaScript lodash Templates Lab</title>
   </head>
   <body>
-    <main id="main-body">
-      <script id="page-template" type="text/x-lodash-template">
-        <div id="sidebar">
-        </div>
-        <div id="post">
-          <%= postTemplate %>
-          <%= commentTemplate %>
-        </div>
-      </script>
-      <form id="post-form" onsubmit="createPost();">
+    <main>
+      <form id="post-form" onsubmit="createPost();return false;">
         Title: <input type="text" id="postTitle"><br>
-        Body: <input type="textarea" id="postBody"><br>
-        author: <input type="text" id="postAuthor"><br>
+        Author: <input type="text" id="postAuthor"><br>
+        Post: <input type="text" id="postBody"><br>
         <input type="submit">
       </form>
-      <form onsubmit="postComment()">
-        Body: <input type="textarea" id="commentText"><br>
-        Name: <input type="text" id="commenterName"><br>
-        <input type="submit">
-      </form>
-      <script id="comments-template" type="text/x-lodash-template">
-        <div id="comments">
-        </div>
-        <form onsubmit="postComment()">
-          Body: <input type="textarea" id="commentText"><br>
-          Name: <input type="text" id="commenterName"><br>
-          <input type="submit">
-        </form>
-      </script>
-      <script id="post-template" type="text/x-lodash-template">
-        <article class="post">
-          <header class="post-title"><%= postT %></header>
-          <p class="post-body"><%= postB %></p>
-            <footer>
-              <span class="posted-by">Posted By: </span>
-              <%= postA %>
-            </footer>
-          </div>
-        </div>
-      </script>
-      <script id="comment-template" type="text/x-lodash-template">
-        <div class="comment">
-          <div class="comment-body"><%= comment %></div>
-          <div class="commenter">
-            <footer>
-              <span class="posted-by">Posted By: </span>
-              <% if(commenter !== '') { %>
-              <%= commenter %>
-              <% } else { %>
-              Anonymous
-              <% } %>
-            </footer>
-          </div>
-        </div>
-      </script>
     </main>
     <script src="node_modules/lodash/lodash.min.js"></script>
     <script src="index.js"></script>
+    <script id="comments-template" type="text/x-lodash-template">
+      <div id="comments">
+        <form onsubmit="postComment();return false;">
+          Name: <input type="text" id="commenter"><br>
+          Comment: <input type="text" id="commentText"><br>
+          <input type="submit">
+        </form>
+      </div>
+    </script>
+    <script id="comment-template" type="text/x-lodash-template">
+      <div>
+        <p><%= comment %></p>
+        <footer>Posted by: <%= commenter %></footer>
+      </div>
+    </script>
+    <script id="page-template" type="text/x-lodash-template">
+      <div id="sidebar"></div>
+      <div id="post"></div>
+    </script>
+    <script id="post-template" type="text/x-lodash-template">
+      <article>
+        <header><h2><%- title %></h2><header>
+        <p><%- body %></p>
+        <footer>Posted by: <%= poster %></footer>
+      </article>
+    </script>
+    </main>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
