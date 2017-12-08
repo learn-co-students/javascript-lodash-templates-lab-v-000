@@ -4,13 +4,59 @@
     <title>JavaScript lodash Templates Lab</title>
   </head>
   <body>
-    <main>
-      <script id="page-template" type="text/x-loadash-template">
-        <div class="sidebar">
+    <main id="main-body">
+      <script id="page-template" type="text/x-lodash-template">
+        <div id="sidebar">
         </div>
-        <div class="post">
-          <script id="post-template" type="text/x-loadash-template">
-          </script>
+        <div id="post">
+          <%= postTemplate %>
+          <%= commentTemplate %>
+        </div>
+      </script>
+      <form id="post-form" onsubmit="createPost();">
+        Title: <input type="text" id="postTitle"><br>
+        Body: <input type="textarea" id="postBody"><br>
+        author: <input type="text" id="postAuthor"><br>
+        <input type="submit">
+      </form>
+      <form onsubmit="postComment()">
+        Body: <input type="textarea" id="commentText"><br>
+        Name: <input type="text" id="commenterName"><br>
+        <input type="submit">
+      </form>
+      <script id="comments-template" type="text/x-lodash-template">
+        <div id="comments">
+        </div>
+        <form onsubmit="postComment()">
+          Body: <input type="textarea" id="commentText"><br>
+          Name: <input type="text" id="commenterName"><br>
+          <input type="submit">
+        </form>
+      </script>
+      <script id="post-template" type="text/x-lodash-template">
+        <article class="post">
+          <header class="post-title"><%= postT %></header>
+          <p class="post-body"><%= postB %></p>
+            <footer>
+              <span class="posted-by">Posted By: </span>
+              <%= postA %>
+            </footer>
+          </div>
+        </div>
+      </script>
+      <script id="comment-template" type="text/x-lodash-template">
+        <div class="comment">
+          <div class="comment-body"><%= comment %></div>
+          <div class="commenter">
+            <footer>
+              <span class="posted-by">Posted By: </span>
+              <% if(commenter !== '') { %>
+              <%= commenter %>
+              <% } else { %>
+              Anonymous
+              <% } %>
+            </footer>
+          </div>
         </div>
       </script>
     </main>
